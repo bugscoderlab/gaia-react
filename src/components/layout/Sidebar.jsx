@@ -1,15 +1,25 @@
-function Sidebar() {
+function Sidebar({menuItems = []}) {
+    const defaultMenuItems = [
+        { label: 'Dashboard', href: '#' },
+        { label: 'Profile', href: '#' },
+        { label: 'Messages', href: '#' },
+        { label: 'Tasks', href: '#' },
+        { label: 'Analytics', href: '#' },
+        { label: 'Settings', href: '#' },
+        { label: 'Logout', href: '#' }
+    ];
+
+    const items = menuItems.length > 0 ? menuItems : defaultMenuItems;
+
     return (<>
-    <aside class="sidebar">
+    <aside className="sidebar">
         <nav>
             <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Logout</a></li>
+                {items.map((item, index) => (
+                    <li key={index}>
+                        <a href={item.href}>{item.label}</a>
+                    </li>
+                ))}
             </ul>
         </nav>
     </aside>
