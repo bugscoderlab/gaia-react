@@ -16,7 +16,6 @@ function App() {
   return (<>
       <Header name = "John Doe" />
       <Sidebar menuItems={customMenuItems} />
-      
       <Content/>
       <Footer/>
     </>

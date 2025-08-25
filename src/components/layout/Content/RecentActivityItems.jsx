@@ -1,7 +1,5 @@
-import RecentActivityItems from "./RecentActivityItems"
-
-function ContentRecentActivity() {
-    const items = [
+function RecentActivityItems({recentActivityItems = []}) {
+    const defaultRecentActivityItems = [
         {
             "title":  "Project Alpha", 
             "status": "Task completed", 
@@ -24,12 +22,16 @@ function ContentRecentActivity() {
         },
     ]
 
-    return(<>
-        <div className="recent-activity">
-            <h2>Recent Activity</h2>
-            <RecentActivityItems recentActivityItems={items}/>
-        </div>
-    </>)
+    const items = recentActivityItems.length > 0 ? recentActivityItems : defaultRecentActivityItems;
+
+    return (<>
+        {items.map((val, key) => (
+            <div className="activity-item" key={key}>
+                <p><strong>{val.title}</strong> - {val.status}</p>
+                <small>{val.time}</small>
+            </div>
+        ))}
+    </>);
 }
 
-export default ContentRecentActivity
+export default RecentActivityItems

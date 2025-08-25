@@ -15,7 +15,7 @@ function StatCard({statItems = []}) {
                 <p>{val.count}</p>
             </div>
         ))}
-    </>)   
+    </>)
 }
 
 export default StatCard
